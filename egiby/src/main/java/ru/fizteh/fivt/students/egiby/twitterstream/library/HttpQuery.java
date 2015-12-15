@@ -1,4 +1,4 @@
-package ru.fizteh.fivt.students.egiby;
+package ru.fizteh.fivt.students.egiby.twitterstream.library;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

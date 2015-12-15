@@ -1,4 +1,4 @@
-package ru.fizteh.fivt.students.egiby;
+package ru.fizteh.fivt.students.egiby.twitterstream.library;
 
 import twitter4j.Status;
 
@@ -10,7 +10,6 @@ import java.time.temporal.ChronoUnit;
  * Created by egiby on 30.09.15.
  */
 public class FormatUtils {
-
     private static final long FIVE = 5L;
     private static final long ONE = 1L;
     private static final long TEN = 10L;
