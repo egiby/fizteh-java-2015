@@ -24,10 +24,10 @@ public class TwitterStream {
                 TwitterPrinter.printHelp(jcm);
                 System.exit(0);
             }
-            TwitterPrinter.getStream(jcp);
+            TwitterPrinter.getStream(jcp, System.out);
         } else {
             try {
-                TwitterPrinter.printAllTweets(jcp);
+                TwitterPrinter.printAllTweets(jcp, System.out);
             } catch (TwitterException te) {
                 te.printStackTrace();
             }

@@ -3,6 +3,7 @@ package ru.fizteh.fivt.students.egiby.twitterstream.library;
 import com.beust.jcommander.JCommander;
 import twitter4j.*;
 
+import java.io.PrintStream;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,7 @@ public class TwitterPrinter {
         jcm.usage();
     }
 
-    public static void printAllTweets(JCommanderParams jcp) throws TwitterException {
+    public static void printAllTweets(JCommanderParams jcp, PrintStream out) throws TwitterException {
         Twitter twitter = new TwitterFactory().getInstance();
         Query query = new Query(jcp.getKeyword());
 
@@ -43,7 +44,7 @@ public class TwitterPrinter {
                     continue;
                 }
 
-                System.out.println(FormatUtils.formatTweet(tweet, false));
+                out.println(FormatUtils.formatTweet(tweet, false));
 
                 numberOfTweets++;
                 if (numberOfTweets == limit) {
@@ -55,7 +56,7 @@ public class TwitterPrinter {
         }
     }
 
-    public static void getStream(JCommanderParams jcp) {
+    public static void getStream(JCommanderParams jcp, PrintStream out) {
         StatusAdapter listener = new StatusAdapter() {
             @Override
             public void onStatus(Status tweet) {
@@ -63,7 +64,7 @@ public class TwitterPrinter {
                     return;
                 }
 
-                System.out.println(FormatUtils.formatTweet(tweet, true));
+                out.println(FormatUtils.formatTweet(tweet, true));
 
                 try {
                     TimeUnit.SECONDS.sleep(1);

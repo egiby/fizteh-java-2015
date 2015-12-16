@@ -4,6 +4,8 @@ import com.beust.jcommander.JCommander;
 import twitter4j.*;
 
 import java.io.PrintStream;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -12,6 +14,38 @@ import java.util.concurrent.TimeUnit;
  */
 public class TwitterPrinter {
     private static final int DEFAULT_NUMBER_OF_TWEETS = 100;
+    private static final String[] RETWEETS = {"ретвит", "ретвита", "ретвитов"};
+
+    public static String formatTweet(Status tweet, boolean isStream) {
+        StringBuilder formattedTweet = new StringBuilder();
+
+        if (!isStream) {
+            formattedTweet.append(FormatUtils.getTimeDiffer(tweet.getCreatedAt().toInstant().
+                    atZone(ZoneId.systemDefault()).toLocalDateTime(), LocalDateTime.now()) + " ");
+        }
+
+        formattedTweet.append("@");
+        formattedTweet.append(tweet.getUser().getScreenName());
+        formattedTweet.append(": ");
+
+        boolean isRetweet = tweet.isRetweet();
+        if (isRetweet) {
+            tweet = tweet.getRetweetedStatus();
+            formattedTweet.append("ретвитнул @");
+            formattedTweet.append(tweet.getUser().getScreenName());
+            formattedTweet.append(": ");
+        }
+
+        formattedTweet.append(tweet.getText());
+
+        if (!isRetweet) {
+            formattedTweet.append(" (");
+            formattedTweet.append(FormatUtils.formatNumber(tweet.getRetweetCount(), RETWEETS));
+            formattedTweet.append(")");
+        }
+
+        return formattedTweet.toString();
+    }
 
     public static void printHelp(JCommander jcm) {
         jcm.usage();
@@ -44,7 +78,7 @@ public class TwitterPrinter {
                     continue;
                 }
 
-                out.println(FormatUtils.formatTweet(tweet, false));
+                out.println(formatTweet(tweet, false));
 
                 numberOfTweets++;
                 if (numberOfTweets == limit) {
@@ -64,7 +98,7 @@ public class TwitterPrinter {
                     return;
                 }
 
-                out.println(FormatUtils.formatTweet(tweet, true));
+                out.println(formatTweet(tweet, true));
 
                 try {
                     TimeUnit.SECONDS.sleep(1);
