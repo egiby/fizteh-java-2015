@@ -1,0 +1,31 @@
+{
+   "html_attributions" : [],
+   "results" : [
+      {
+         "formatted_address" : "Лондон, Великобритания",
+         "geometry" : {
+            "location" : {
+               "lat" : 51.5073509,
+               "lng" : -0.1277583
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 51.6723432,
+                  "lng" : 0.148271
+               },
+               "southwest" : {
+                  "lat" : 51.38494009999999,
+                  "lng" : -0.3514683
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+         "id" : "b1a8b96daab5065cf4a08f953e577c34cdf769c0",
+         "name" : "Лондон",
+         "place_id" : "ChIJdd4hrwug2EcRmSrV3Vo6llI",
+         "reference" : "CpQBiAAAAG3LYlpjXtbO5MgMCOBLECT1K_zbd6sq_WC5iqAsVpJKRQTBiti5w-sERbkynEJU4JWR9oCVy5_fJ1QJfwj3Mfuvi05GjEiM-Dch4yIFiDiVEzgAhdbJyFHNSh-174dOZylrCgoaNcxIzXWE6nQTbsN7zBiK2s6pPHZLQedr6rsQZ1GZMO81I9OechHz94f6RxIQkSfRjfusgieFhVAsa_0h-hoUyrUQIl4m9n4nev-LSQlYBK3Aj2o",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
