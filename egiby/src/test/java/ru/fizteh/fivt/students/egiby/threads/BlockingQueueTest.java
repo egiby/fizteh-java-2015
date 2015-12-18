@@ -1,6 +1,8 @@
 package ru.fizteh.fivt.students.egiby.threads;
 
 import org.junit.Test;
+
+import static java.lang.Thread.sleep;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -27,11 +29,6 @@ public class BlockingQueueTest {
 
         @Override
         public void run() {
-            try {
-                sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             queue.offer(list);
         }
     }
@@ -75,6 +72,7 @@ public class BlockingQueueTest {
 
         synchronized (MONITOR) {
             threadPush1.start();
+            sleep(10);
             threadPush2.start();
             threadPop.start();
             while (answer.isEmpty()) {
