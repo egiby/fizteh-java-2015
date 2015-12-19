@@ -17,7 +17,7 @@ public class BlockingQueueTest {
     private static final Object MONITOR = new Object();
 
     private static class ThreadTest extends Thread {
-        protected static BlockingQueue<Integer> queue = new BlockingQueue<>(150);
+        protected static BlockingQueue<Integer> queue = new BlockingQueue<>(400000);
     }
 
     private static class ThreadPush extends ThreadTest {
@@ -61,18 +61,17 @@ public class BlockingQueueTest {
             to1.add(i * 2);
         }
 
-        for (int i = 1; i < 300000; ++i) {
+        for (int i = 0; i < 300000; ++i) {
             to2.add(i * 2 + 1);
         }
 
         ThreadPush threadPush1 = new ThreadPush(to1);
         ThreadPush threadPush2 = new ThreadPush(to2);
 
-        ThreadPop threadPop= new ThreadPop(to1.size() + to2.size());
+        ThreadPop threadPop = new ThreadPop(to1.size() + to2.size());
 
         synchronized (MONITOR) {
             threadPush1.start();
-            sleep(10);
             threadPush2.start();
             threadPop.start();
             while (answer.isEmpty()) {
