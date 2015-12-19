@@ -1,9 +1,9 @@
 package ru.fizteh.fivt.students.egiby.moduletests;
 
 import com.beust.jcommander.JCommander;
+import ru.fizteh.fivt.students.egiby.moduletests.library.JCommanderParams;
+import ru.fizteh.fivt.students.egiby.moduletests.library.TwitterPrinter;
 import twitter4j.TwitterException;
-
-import ru.fizteh.fivt.students.egiby.moduletests.library.*;
 
 /**
  * Created by egiby on 24.09.15.
@@ -17,7 +17,6 @@ public class TwitterStream {
             TwitterPrinter.printHelp(jcm);
             System.exit(0);
         }
-
         if (jcp.isStream()) {
             if (jcp.getNumberTweets() != null) {
                 TwitterPrinter.printHelp(jcm);
