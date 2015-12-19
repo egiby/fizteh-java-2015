@@ -1,8 +1,6 @@
 package ru.fizteh.fivt.students.egiby.threads;
 
 import java.util.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by egiby on 17.12.15.
